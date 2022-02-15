@@ -1,25 +1,22 @@
 searchTweets <- function(key, secret, searchString, count = 5, resultType = "mixed"){
-  # check searchString is valid
+  
   if (nchar(searchString) > 100) {
     stop("searchString can only be up to 100 characters")
   } else if (nchar(searchString) == 0) {
     stop("searchString can not be empty")
   }
   
-  #check count is valid
   if (count <= 0) {
     stop("count must be positive")
   }
   count <- as.integer(count)
   
-  #check resultType is valid
   if (!(resultType %in% c("mixed", "recent", "popular"))){
     stop("resultType can only be mixed or recent or popular")
   }
   
   
   app_keys <- openssl::base64_encode(paste0(key, ":", secret))
-  
   
   r <- httr::POST("https://api.twitter.com/oauth2/token",
                   httr::add_headers(Authorization = paste0("Basic ", app_keys)),
@@ -32,7 +29,7 @@ searchTweets <- function(key, secret, searchString, count = 5, resultType = "mix
   
   url <- paste0(base,searchString,"&",count,"&",resultType)
   
-  res=httr::GET(url, add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
+  res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
   
   obj <- httr::content(res, as = "text")
   
@@ -40,6 +37,31 @@ searchTweets <- function(key, secret, searchString, count = 5, resultType = "mix
   
   data <- as.data.frame(json_data)
   
-  return(data)
+  #select columns that we are interested
+  data <- dplyr::select(data, 
+                        statuses.created_at,
+                        statuses.user.name, 
+                        statuses.user.screen_name,
+                        statuses.user.followers_count,
+                        statuses.text, 
+                        statuses.truncated, 
+                        statuses.favorited,
+                        statuses.retweeted,
+                        statuses.favorite_count,
+                        statuses.retweet_count)
   
+  
+  data <- dplyr::rename(data,
+                        created_time = statuses.created_at,
+                        user_name = statuses.user.name,
+                        user_screen_name = statuses.user.screen_name,
+                        user_followers_count = statuses.user.followers_count,
+                        text = statuses.text,
+                        truncated = statuses.truncated,
+                        favorited = statuses.favorited,
+                        retweeted = statuses.retweeted,
+                        favorite_count = statuses.favorite_count,
+                        retweet_count = statuses.retweet_count)
+  
+  return(data)
 }

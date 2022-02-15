@@ -33,15 +33,36 @@ The \code{searchString} is always required. It can contain hashtag in order to s
 
 The \code{resultType} Specifies what type of search results you would prefer to receive. The current default is "mixed." Valid values include:
 
-\item{mixed} : Include both popular and real time results in the response.
+  \code{mixed} : Include both popular and real time results in the response
 
-\item{recent} : return only the most recent results in the response
+  \code{recent} : return only the most recent results in the response
 
-\item{popular} : return only the most popular results in the response.
+  \code{popular} : return only the most popular results in the response
 
 }
 \value{
-A dataframe 
+A dataframe contains following columns:
+
+\item{created_time}{When this tweet was created}
+
+\item{user_name}{The name of the user}
+
+\item{user_screen_name}{The screent name of the user}
+
+\item{user_followers_count}{The number of followers of the user}
+
+\item{text}{The text of this tweet}
+
+\item{truncated}{Whether this tweet was truncated}
+
+\item{favorited}{Whether this tweet has been favorited}
+
+\item{retweeted}{Whether this tweet has been retweeted}
+
+\item{favorite_count}{The number of times this tweet has been favorited}
+
+\item{retweet_count}{The number of times this tweet has been retweeted}
+
 }
 \references{
 https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets
