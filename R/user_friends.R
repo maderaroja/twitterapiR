@@ -1,5 +1,9 @@
 
-user_friends <- function(key, secret, screen_name, number = 200){
+user_friends <- function(key, secret, screen_name, number = 195){
+    if (number > 195){
+        stop("The number of users to return per page, up to a maximum of 195")
+    }
+    
     # generate bearer key
     app_keys <- openssl::base64_encode(paste0(key, ":", secret))
     r <- httr::POST("https://api.twitter.com/oauth2/token",
@@ -11,25 +15,29 @@ user_friends <- function(key, secret, screen_name, number = 200){
     
     full_url = glue(base_url, 'screen_name={screen_name}&count={number}')
     
-
+    
     res=GET(full_url, add_headers(
         Authorization=paste0("Bearer ", bearer$access_token))
     )
     
+    #check connection
+    if (res$status_code != '200'){
+        stop(paste("Connection Failed! Please see the following detail: \n",res))
+    }
     
     obj <- httr::content(res, as = "text")
     
     json_data <- fromJSON(obj, flatten = TRUE)
     
-    if(!is.null(json_data$error)){
-        stop("Error: Invalid inputs!")
-    }else{
-        data <- json_data$users  %>% select(name,screen_name, description) %>% as.data.frame()
-    }
+    
+    data <- json_data$users  %>% select(name,screen_name, description) %>% as.data.frame()
+    
     return(data)
 }
 
 
-#key = 'Tds7CCMzPsJbRZH7aikpKiObNs'
+#key = 'Tds7CCMzPsJbRZH7aikpKiObN'
+#secret = "1234"
 #secret= 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz'
-#df = user_friends(key, secret, screen_name ="BarackObama", 10)
+#df = user_friends(key, secret, screen_name ="BarackObama", 100)
+
