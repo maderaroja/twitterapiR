@@ -31,6 +31,11 @@ searchTweets <- function(key, secret, searchString, count = 5, resultType = "mix
   
   res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
   
+  #check connection
+  if (res$status_code != '200'){
+    stop(paste("Connection Failed! Please see the following detail: \n",res))
+  }
+  
   obj <- httr::content(res, as = "text")
   
   json_data <- jsonlite::fromJSON(obj, flatten = TRUE)
