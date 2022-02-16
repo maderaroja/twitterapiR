@@ -1,15 +1,9 @@
-
-user_friends <- function(key, secret, screen_name, number = 195){
+user_friends <- function(screen_name, number = 195){
     if (number > 195){
         stop("The number of users to return per page, up to a maximum of 195")
     }
     
-    # generate bearer key
-    app_keys <- openssl::base64_encode(paste0(key, ":", secret))
-    r <- httr::POST("https://api.twitter.com/oauth2/token",
-                    httr::add_headers(Authorization = paste0("Basic ", app_keys)),
-                    body = list(grant_type = "client_credentials"))
-    bearer <- httr::content(r, encoding = "UTF-8")
+    bearer = get_bearer()
     
     base_url = "https://api.twitter.com/1.1/friends/list.json?"
     
@@ -36,8 +30,14 @@ user_friends <- function(key, secret, screen_name, number = 195){
 }
 
 
-#key = 'Tds7CCMzPsJbRZH7aikpKiObN'
-#secret = "1234"
-#secret= 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz'
+
+
+
+Sys.setenv(key = 'Tds7CCMzPsJbRZH7aikpKiObN')
+Sys.getenv('key')
+Sys.setenv(secret = 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
+Sys.getenv('secret')
+#Sys.unsetenv("key")
 #df = user_friends(key, secret, screen_name ="BarackObama", 100)
+user_friends(screen_name="BarackObama", number =10)
 
