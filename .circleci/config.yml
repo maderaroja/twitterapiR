@@ -11,7 +11,7 @@ jobs:
         #| R -e "install.packages('glue')" | R -e "install.packages('httr')" |  R -e "install.packages('dplyr')" | R -e "install.packages('jsonlite')" 
       - run:
           name: Install package
-          run: install.packages('glue')
+          run: R -e "install.packages('glue')"
      - run:
           name: Build package
           command: R CMD build .
