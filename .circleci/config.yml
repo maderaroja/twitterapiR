@@ -13,4 +13,4 @@ jobs:
           command: R CMD build .
       - run:
           name: Check package
-          command: Rscript test/test_get_bearer.R
+          command: Rscript test/testthat/test_get_bearer.R
