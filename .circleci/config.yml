@@ -6,8 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install package dependencies
+          name: Install package dependencies1
           command: R -e "devtools::install_deps(dep = TRUE)" 
+      - run:
+          name: Install package dependencies2
+          command: R -e "glue::install_deps(dep = TRUE)" 
       - run:
           name: Build package
           command: R CMD build .
