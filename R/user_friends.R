@@ -7,10 +7,10 @@ user_friends <- function(screen_name, number = 195){
     
     base_url = "https://api.twitter.com/1.1/friends/list.json?"
     
-    full_url = glue(base_url, 'screen_name={screen_name}&count={number}')
+    full_url = glue::glue(base_url, 'screen_name={screen_name}&count={number}')
     
     
-    res=GET(full_url, add_headers(
+    res=httr::GET(full_url, httr::add_headers(
         Authorization=paste0("Bearer ", bearer$access_token))
     )
     
@@ -21,23 +21,12 @@ user_friends <- function(screen_name, number = 195){
     
     obj <- httr::content(res, as = "text")
     
-    json_data <- fromJSON(obj, flatten = TRUE)
+    json_data <- jsonlite::fromJSON(obj, flatten = TRUE)
     
     
-    data <- json_data$users  %>% select(name,screen_name, description) %>% as.data.frame()
+    data <- dplyr::select(json_data$users,name,screen_name, description)
+    data <- as.data.frame(data)
     
     return(data)
 }
-
-
-
-
-
-Sys.setenv(key = 'Tds7CCMzPsJbRZH7aikpKiObN')
-Sys.getenv('key')
-Sys.setenv(secret = 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
-Sys.getenv('secret')
-#Sys.unsetenv("key")
-#df = user_friends(key, secret, screen_name ="BarackObama", 100)
-user_friends(screen_name="BarackObama", number =10)
 
