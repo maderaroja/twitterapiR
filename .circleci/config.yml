@@ -12,8 +12,5 @@ jobs:
           name: Build package
           command: R CMD build .
       - run:
-          name: Install package
-          command: R CMD INSTALL twitterapiR
-      - run:
           name: Check package
-          command: Rscript test/testthat/test_get_bearer.R
+          command: R CMD check *tar.gz
