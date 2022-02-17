@@ -1,4 +1,4 @@
-followersCount <- function(key, secret, screen_name){
+followersCount <- function(screen_name){
     
     if (nchar(screen_name) > 100) {
         stop("screen_name can only be up to 100 characters")
@@ -6,12 +6,7 @@ followersCount <- function(key, secret, screen_name){
         stop("screen_name cannot be empty")
     }
     
-    
-    app_keys <- openssl::base64_encode(paste0(key, ":", secret))
-    r <- httr::POST("https://api.twitter.com/oauth2/token",
-                httr::add_headers(Authorization = paste0("Basic ", app_keys)),
-                body = list(grant_type = "client_credentials"))
-    bearer <- httr::content(r, encoding = "UTF-8")
+    bearer = get_bearer()
 
     screen_name <- URLencode(screen_name, reserved = TRUE) # encode characters in URLs
 
@@ -38,5 +33,4 @@ followersCount <- function(key, secret, screen_name){
     return(data)
     
 }
-try_obama <- followersCount('Tds7CCMzPsJbRZH7aikpKiObN', 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz', 'BarackObama')
-try_obama
+
