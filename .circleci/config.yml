@@ -8,11 +8,8 @@ jobs:
       - run:
           name: Install package dependencies
           command: R -e "devtools::install_deps(dep = TRUE)" 
-        #| R -e "install.packages('glue')" | R -e "install.packages('httr')" |  R -e "install.packages('dplyr')" | R -e "install.packages('jsonlite')" 
+      - run: install.packages('glue')
       - run:
-          name: Install package
-          run: R -e "install.packages('glue')"
-     - run:
           name: Build package
           command: R CMD build .
       - run:
