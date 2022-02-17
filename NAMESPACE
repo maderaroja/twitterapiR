@@ -1,4 +1,4 @@
-import(httr, dplyr, jsonlite, glue)
-export(glue)
+importFrom(glue)
+import(httr, dplyr, jsonlite)
 export(get_bearer)
 export(user_friends)
