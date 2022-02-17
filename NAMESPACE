@@ -1,4 +1,2 @@
-import(httr, dplyr, jsonlite, glue)
 export(get_bearer)
 export(user_friends)
-
