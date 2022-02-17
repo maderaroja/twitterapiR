@@ -10,7 +10,7 @@ jobs:
           command: R -e "devtools::install_deps(dep = TRUE)"
       - run:
           name: Build package
-          command: R CMD build .
+          command: R CMD build twitterapiR
       - run:
           name: Check package
           command: Rscript test/testthat/test_get_bearer.R
