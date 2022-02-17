@@ -1,5 +1,5 @@
 library(testthat)
-#library(twitterapiR)
+library(twitterapiR)
 
 test_that("API key is retreived", {
     Sys.setenv(key = 'Tds7CCMzPsJbRZH7aikpKiObN')
