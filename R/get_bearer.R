@@ -9,5 +9,10 @@ get_bearer <- function() {
                     httr::add_headers(Authorization = paste0("Basic ", app_keys)),
                     body = list(grant_type = "client_credentials"))
     bearer <- httr::content(r, encoding = "UTF-8")
-    bearer
+    
+    if (!is.null(bearer$errors)){
+        stop("Invalid key or secret, please see the following details: https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api")
+    }else{
+        return(bearer)
+    }
 }
