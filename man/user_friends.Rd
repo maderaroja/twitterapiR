@@ -10,7 +10,7 @@ A function to output the friends of one user
 \usage{
 user_friends(screen_name = character(), number = 200)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{screen_name}{
 A string of one Twitter screen name
@@ -19,15 +19,18 @@ A string of one Twitter screen name
 The number of friends to output. Default is 195.
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
-A data.frame, one row for each friend with columns name, screen_name, number.
+A dataframe contains following columns:
+\item{name}{The name of the user}
+
+\item{screen_name}{The screen name of the user}
+
+\item{description}{The description of the user}
 
 }
 \references{
-https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/follow-search-get-users/api-reference/get-friends-list
+\url{https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/follow-search-get-users/api-reference/get-friends-list}
 }
 \author{
 Ling Xiang Zou
@@ -35,5 +38,4 @@ Ling Xiang Zou
 
 
 \examples{
-
-user_friends(key, secret, screen_name ="BarackObama", 10)
+#user_friends(screen_name ="BarackObama", 10)
