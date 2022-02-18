@@ -9,6 +9,7 @@ Description: More about what it does (maybe more than one line)
 License: MIT
 Depends:
     R (>= 4.0)
+Config/testthat/edition: 3
 Imports:
     httr,
     jsonlite,
