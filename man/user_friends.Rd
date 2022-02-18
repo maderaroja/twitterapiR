@@ -8,7 +8,7 @@ A function to output the friends of one user
  This function will accept a screen name of an user and output the name, screen name, and description of the user's friends.
 }
 \usage{
-user_friends(screen_name = character(), number = 200)
+user_friends(screen_name, number = 195)
 }
 
 \arguments{
@@ -39,3 +39,4 @@ Ling Xiang Zou
 
 \examples{
 #user_friends(screen_name ="BarackObama", 10)
+}

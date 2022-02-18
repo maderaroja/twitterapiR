@@ -25,7 +25,7 @@ Twitter API key secret are used to authenticate requests.
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 
-The \code{key and secret} is always required, that is essentially the username and password for your API. To generate this key via \code{\link{https://developer.twitter.com/}}
+The \code{key and secret} is always required, that is essentially the username and password for your API. To generate this key via \url{https://developer.twitter.com/}
 
 If the key and secret are successfully set, the function will return TRUE, otherwise, return FALSE.
 
