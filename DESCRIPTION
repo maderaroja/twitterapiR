@@ -10,7 +10,7 @@ License: MIT
 Depends:
     R (>= 4.0)
 Imports:
-    httr (>= 1.4.2),
+    httr,
     jsonlite,
     glue,
     dplyr,
