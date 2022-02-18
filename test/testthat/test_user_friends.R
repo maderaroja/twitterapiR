@@ -2,7 +2,8 @@ library(testthat)
 
 test_that("Incorrect inputs", {
     # invalid screen_name
-    expect_error(user_friends(screen_name="BarackObamaa", number =10))
+    expect_true(user_friends(screen_name="BarackObamaa", number =10))
+    #expect_error(user_friends(screen_name="BarackObamaa", number =10))
     # invalid number
     expect_error(user_friends(screen_name="BarackObama", number = 2000))
 })
