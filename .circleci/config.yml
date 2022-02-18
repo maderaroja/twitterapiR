@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Install package dependencies1
-          command: R -e "devtools::install_deps(dep = TRUE)" | R -e "install.packages("httr")"
+          command: R -e "devtools::install_deps(dep = TRUE)" | R -e "install.packages('httr')"
       - run:
           name: Build package
           command: R CMD build .
