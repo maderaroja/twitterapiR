@@ -2,6 +2,8 @@ library(testthat)
 library(twitterapiR)
 
 test_that("API key is retreived", {
+    Sys.setenv(key = Sys.getenv("TWITTER_API_KEY"))
+    Sys.setenv(secret =  Sys.getenv("TWITTER_API_SECRET"))
     expect_type(get_bearer(), "list")
 })
 
