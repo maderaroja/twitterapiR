@@ -28,16 +28,3 @@ user_friends <- function(screen_name, number = 195){
     
     return(data)
 }
-
-
-
-
-
-Sys.setenv(key = 'Tds7CCMzPsJbRZH7aikpKiObN')
-Sys.getenv('key')
-Sys.setenv(secret = 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
-Sys.getenv('secret')
-#Sys.unsetenv("key")
-#df = user_friends(key, secret, screen_name ="BarackObama", 100)
-user_friends(screen_name="BarackObama", number =10)
-
