@@ -42,7 +42,7 @@ A dataframe contains following columns:
 
 \item{user_name}{The name of the user}
 
-\item{user_screen_name}{The screent name of the user}
+\item{user_screen_name}{The screen name of the user}
 
 \item{user_followers_count}{The number of followers of the user}
 
