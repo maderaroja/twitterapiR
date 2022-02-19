@@ -1,4 +1,20 @@
 get_bearer <- function() {
+     #' get_bearer
+     #' 
+     #' @description This function is a helper function that can be used to help generate bearer key using API key and API secret.
+     #' 
+     #' @usage get_bearer()
+     #' @return If the key and secret are valid, the function will return a list of the type and key.
+     #' 
+     #' @details The key and secret key is required to use the functions in twitterapiR package and query information from Twitter.
+     #' 
+     #' @examples
+     #' key = 'YOUR-KEY-HERE'
+     #' secret = 'YOUR-SECRET-HERE'
+     #' get_bearer()
+     #' 
+     #' @export
+     #' 
     key <- Sys.getenv("key")
     secret<-Sys.getenv("secret")
     if (key == "" | secret == "") {
