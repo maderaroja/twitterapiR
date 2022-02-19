@@ -6,7 +6,7 @@ Testing
 Unit tests should me made for every function. Integration tests are also required.
 Submitting changes
 
-Please send a GitHub Pull Request to nutrientr with a clear list of what you've done (read more about pull requests). Please follow our coding conventions below and make sure all of your commits are atomic (one feature per commit).
+Please send a GitHub Pull Request to twitterapiR with a clear list of what you've done (read more about pull requests). Please follow our coding conventions below and make sure all of your commits are atomic (one feature per commit).
 
 Always write a clear log message for your commits. One-line messages are fine for small changes, but bigger changes should look like this:
 
