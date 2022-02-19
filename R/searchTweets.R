@@ -1,4 +1,48 @@
 searchTweets <- function(searchString, resultType = "mixed", count = 5){
+
+    
+    #' searchTweets
+    #' 
+    #' @description This function will search for related tweets that match the specified string.
+    #' 
+    #' @param searchString character. A search string of 100 characters maximum, including operators.
+    #' @param resultType character. If not NULL, returns filtered tweets as per value. See details for allowed values.
+    #' @param count integer. If not NULL, restricts the maxumin number of tweets return. Default is 5.
+    #' 
+    #' 
+    #' @usage searchTweets(searchString, resultType = "mixed", count = 5)
+    #' @return A dataframe contains following columns:
+    #' created_time: When this tweet was created
+    #' user_name: The name of the user
+    #' user_screen_name: The screen name of the user
+    #' user_followers_count: The number of followers of the user
+    #' text: The text of this tweet
+    #' truncated: Whether this tweet was truncated
+    #' favorited: Whether this tweet has been favorited
+    #' retweeted: Whether this tweet has been retweeted
+    #' favorite_count: The number of times this tweet has been favorited
+    #' retweet_count: The number of times this tweet has been retweeted
+    #' 
+    #' @details This function will return any authorized tweets that match the search conditions. 
+    #' Authorized tweets are public tweets, as well as those protected tweets that are authenticated by 
+    #' registerTwitterOAuth, which users can use. Please note that Twitter's search service and, 
+    #' by extension, the Search API is not meant to be an exhaustive source of Tweets.
+    #' 
+    #' The searchString is always required. It can contain hashtag in order to search some tag in Twitter.
+    #' The resultType Specifies what type of search results you would prefer to receive. 
+    #' The current default is "mixed." Valid values include:
+    #' mixed : Include both popular and real time results in the response
+    #' recent : return only the most recent results in the response
+    #' popular : return only the most popular results in the response
+    #' 
+    #' @references <https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets>
+    #' @examples
+    #' ##search for hashtag #canada
+    #' searchTweets('#canada', resultType = "popular", count = 15)
+    #' 
+    #' @export
+    #' 
+    
     
     #check searchString
     if (nchar(searchString) > 100) {
