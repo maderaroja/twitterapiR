@@ -5,7 +5,7 @@
 A function to get the bearer key
 }
 \description{
-Retrieves key, and secret key from environment if available.
+This function is a helper function that can be used to help generate bearer key using API key and API secret.
 }
 \usage{
 get_bearer()
