@@ -1,3 +1,6 @@
+key <- Sys.getenv("TWITTER_API_KEY")
+secret <- Sys.getenv("TWITTER_API_SECRET")
+setted <- set_bearer(key, secret)
 
 test_that("Incorrect inputs", {
     # invalid screen_name
