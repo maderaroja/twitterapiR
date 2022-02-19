@@ -9,9 +9,23 @@ This project is an API wrapper for Twitter in R. This package provides user frie
 
 Current list of functions included in the wrapper:
 
-set_bearer("API key", "API secret")
-get_bearer()
-user_friends(screen_name, number)
-searchTweets(searchString, resultType, count)
-followersCount(screen_name)
+* set_bearer("API key", "API secret")
+* get_bearer()
+* user_friends(screen_name, number)
+* searchTweets(searchString, resultType, count)
+* followersCount(screen_name)
 
+## Installation
+
+```{r}
+remotes::install_github("tangaot/twitterapiR")
+```
+
+## Usage
+```{r}
+library(twitterapiR)
+set_bearer("API key", "API secret")
+user_friends(screen_name = "BarackObama", number = 10)
+searchTweets('#canada', resultType = "popular", count = 15)
+followersCount(screen_name ="BarackObama")
+```
