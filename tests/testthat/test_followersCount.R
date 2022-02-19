@@ -1,6 +1,4 @@
 
-library(testthat)
-
 test_that("Incorrect inputs", {
     # invalid screen_name
     expect_error(followersCount(screen_name="BarackObamaa"))

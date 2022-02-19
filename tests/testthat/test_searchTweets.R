@@ -1,5 +1,3 @@
-library(testthat)
-#library(twitterapiR)
 
 key <- Sys.getenv("TWITTER_API_KEY")
 secret <- Sys.getenv("TWITTER_API_SECRET")

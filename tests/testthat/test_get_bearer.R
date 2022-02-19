@@ -1,5 +1,3 @@
-library(testthat)
-library(twitterapiR)
 
 test_that("API key is retreived", {
     skip_if_no_auth()

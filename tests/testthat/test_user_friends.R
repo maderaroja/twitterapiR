@@ -1,4 +1,3 @@
-library(testthat)
 
 test_that("Incorrect inputs", {
     # invalid screen_name

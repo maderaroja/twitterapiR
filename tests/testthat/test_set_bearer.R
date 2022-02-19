@@ -1,5 +1,3 @@
-library(testthat)
-#library(twitterapiR)
 
 test_that("API key is set successfully", {
     key <- Sys.getenv("TWITTER_API_KEY")
