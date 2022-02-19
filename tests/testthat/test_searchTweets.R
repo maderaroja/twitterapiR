@@ -6,6 +6,7 @@ setted <- set_bearer(key, secret)
 test_that("Incorrect inputs", {
     expect_error(searchTweets(searchString="#ubc" ,resultType = "all", count = 5))
     expect_error(searchTweets(searchString="#ubc" ,resultType = "mixed", count = -10))
+    expect_error(searchTweets(searchString="#ubc" ,resultType = "mixed", count = 1000))
 })
 
 test_that("output is a data frame",{

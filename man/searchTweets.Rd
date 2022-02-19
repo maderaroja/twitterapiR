@@ -17,7 +17,7 @@ If not NULL, returns filtered tweets as per value. See details for allowed value
 }
 
   \item{count}{
-If not NULL, restricts the maxumin number of tweets return. Default is 5.
+If not NULL, restricts the maxumin number of tweets return. Default is 5, up to a maximum of 100
 }
 }
 \details{

@@ -7,7 +7,8 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     #' 
     #' @param searchString character. A search string of 100 characters maximum, including operators.
     #' @param resultType character. If not NULL, returns filtered tweets as per value. See details for allowed values.
-    #' @param count integer. If not NULL, restricts the maxumin number of tweets return. Default is 5.
+    #' @param count integer. If not NULL, restricts the maxumin number of tweets return. 
+    #' Default is 5, up to a maximum of 100
     #' 
     #' 
     #' @usage searchTweets(searchString, resultType = "mixed", count = 5)
@@ -46,20 +47,22 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     
     #check searchString
     if (nchar(searchString) > 100) {
-        stop("searchString can only be up to 100 characters")
+        stop("searchString can only be up to 100 characters!")
     } else if (nchar(searchString) == 0) {
-        stop("searchString can not be empty")
+        stop("searchString can not be empty!")
     }
     
     #check count
     count <- as.integer(count)
     if (count <= 0) {
-        stop("Count must be positive")
+        stop("Count must be positive!")
+    } else if(count > 100){
+        stop("Count must less than 100!")
     }
     
     #check resultType
     if (!(resultType %in% c("mixed", "recent", "popular"))){
-        stop("resultType can only be mixed or recent or popular")
+        stop("resultType can only be mixed or recent or popular!")
     }
     
     # get key and secret
@@ -69,7 +72,7 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     
     base <- "https://api.twitter.com/1.1/search/tweets.json?q="
     
-    url <- paste0(base,searchString,"&",count,"&",resultType)
+    url <- paste0(base,searchString,"&count=",count,"&resultType=",resultType)
     
     #get from API
     res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
