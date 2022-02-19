@@ -18,6 +18,9 @@ Current list of functions included in the wrapper:
 ## Installation
 
 ```{r}
+if (!require("remotes")) {
+  install.packages("remotes")
+}
 remotes::install_github("tangaot/twitterapiR")
 ```
 
