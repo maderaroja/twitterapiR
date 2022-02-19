@@ -24,7 +24,7 @@ if (!require("remotes")) {
 remotes::install_github("tangaot/twitterapiR")
 ```
 
-## Usage
+## Example
 ```{r}
 library(twitterapiR)
 set_bearer("API key", "API secret")
