@@ -1,0 +1,29 @@
+---
+title: "Vignettes"
+author: "Nelson Tang, Xiang Ling Zou, Nyanda Redwood"
+date: "18/02/2022"
+output: html_document
+---
+
+Current list of functions included in the wrapper:
+
+    set_bearer("API key", "API secret")
+    get_bearer()
+    user_friends(screen_name, number)
+    searchTweets(searchString, resultType, count)
+    followersCount(screen_name)
+
+Installation
+
+if (!require("remotes")) {
+  install.packages("remotes")
+}
+remotes::install_github("tangaot/twitterapiR")
+
+Example
+
+library(twitterapiR)
+set_bearer("API key", "API secret")
+user_friends(screen_name = "BarackObama", number = 10)
+searchTweets('#canada', resultType = "popular", count = 15)
+followersCount(screen_name ="BarackObama")
