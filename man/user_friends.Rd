@@ -19,7 +19,11 @@ A string of one Twitter screen name
 The number of friends to output. Default is 195.
 }
 }
+\details{
+%%  ~~ If necessary, more details than the description above ~~
+This will only work correctly with users who have their profile public, or you are authenticate or granted access.
 
+}
 \value{
 A dataframe contains following columns:
 \item{name}{The name of the user}
