@@ -6,7 +6,7 @@ Set Bearer for Twitter API
 }
 \description{
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
-This function will set key, and secret key as environment variable.
+This function will set key and secret key as environment variables.
 }
 \usage{
 set_bearer(key, secret)
