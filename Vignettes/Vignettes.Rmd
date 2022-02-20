@@ -1,29 +1,144 @@
 ---
-title: "Vignettes"
+title: "Introduction to twitterapiR"
 author: "Nelson Tang, Xiang Ling Zou, Nyanda Redwood"
-date: "18/02/2022"
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{cnfapi-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-Current list of functions included in the wrapper:
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
 
-    set_bearer("API key", "API secret")
-    get_bearer()
-    user_friends(screen_name, number)
-    searchTweets(searchString, resultType, count)
-    followersCount(screen_name)
 
-Installation
-
-if (!require("remotes")) {
-  install.packages("remotes")
-}
-remotes::install_github("tangaot/twitterapiR")
-
-Example
-
+```{r setup}
 library(twitterapiR)
-set_bearer("API key", "API secret")
-user_friends(screen_name = "BarackObama", number = 10)
-searchTweets('#canada', resultType = "popular", count = 15)
-followersCount(screen_name ="BarackObama")
+library(dplyr)
+library(ggplot2)
+```
+
+## Descritpion  
+  
+The `twitterapiR` package is an R wrapper for [Twitter API](https://developer.twitter.com/en/docs/twitter-api), which provides programmatic access to the popular social media platform **Twitter**. The `twitterapiR` package provides access to each of the endpoints of **Twitter API**, and it  contains several functions, for each of which the following documentation offers usage examples.
+
+## Function Usage
+The `searchTweets()` function can be used to find recent tweets using characters including hash tags. In the example below `searchTweets()` function returns all the users who recently used #ubc.
+
+```{r}
+
+set_bearer('Tds7CCMzPsJbRZH7aikpKiObN', 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
+ubc_tweets <- searchTweets("#ubc", resultType = "recent",count = 100)
+created_time <- substr(ubc_tweets$created_time, start = 5, stop = 13)
+created_time <- strptime(created_time,format='%b %d %H')
+created_time_df <- as.data.frame(created_time)
+
+created_time_df <-  created_time_df %>% group_by(created_time) %>% summarize(num_tweets = n())
+
+
+ggplot(created_time_df, aes(x = created_time, y = num_tweets)) + 
+    geom_area(fill="firebrick") +
+    geom_line(color="black", size=1) +
+    geom_point(color="black", size=3) +
+    theme_bw()+
+    labs(x = "Created Time", y= "Number of Tweets")+
+    ggtitle("The Latest 100 Trending Tweets Containing the Hashtag #ubc")
+    theme(panel.grid.major.x = element_blank(),panel.grid.minor.x = element_blank())
+
+
+```
+  
+The `followersCount()` function can be used to quickly get the number of followers a user has by using the user's screen name. In the plot below we used this function in a for loop to get the followers of the following state leaders as of 2022:
+
+- Joe Biden -President of the United States
+- Justin Trudeau -Prime Minister of Canada
+- Boris Johnson -Prime Mnister of the United Kingdom
+- Emmanuel Macron -President of France
+- Moon Jae-in -President of South Korea
+```{r} 
+# Use followersCount to find the number of follower for each country leader
+list = c("POTUS", "JustinTrudeau", "BorisJohnson", "EmmanuelMacron", "moonriver365")
+followers = c()
+for (i in list){
+    followers[i]=followersCount(screen_name =i)$followers_count
+}
+
+followers <- as.data.frame(followers)
+followers["name"] <- c("Joe Biden", "Justin Trudeau", "Boris Johnson", "Emmanuel Macron", "Moon Jae-in" )
+
+followers["no_of_followers"] <- followers$followers
+
+followers$followers = NULL
+
+followers
+
+
+
+
+
+
+```
+
+
+```{r}
+
+theme_set(theme_bw())  # pre-set the bw theme.
+
+g <- ggplot(followers, aes(name, no_of_followers))
+
+# barplot
+g + geom_col() + 
+  labs(subtitle="example plot", 
+       y="no of followers", 
+       x="name", 
+       title="Popular President?", 
+       )
+```
+
+The `user_friends()` function can be used to quickly get the number of friends a user has by using the user's screen name.  
+  
+Similar to the above plot, the plot below uses the `user_friends()` function in a for loop to get the friends of the following state leaders as of 2022:
+
+- Joe Biden -President of the United States
+- Justin Trudeau -Prime Minister of Canada
+- Boris Johnson -Prime Mnister of the United Kingdom
+- Emmanuel Macron -President of France
+- Moon Jae-in -President of South Korea
+
+```{r}
+
+# Use user_friends to find the number of friends for each country leader
+list = c("POTUS", "JustinTrudeau", "BorisJohnson", "EmmanuelMacron", "moonriver365")
+friends = c()
+for (i in list){
+    friends[i]=nrow(user_friends(screen_name=i))
+}
+
+friends <- as.data.frame(friends)
+friends["name"] <- c("Joe Biden", "Justin Trudeau", "Boris Johnson", "Emmanuel Macron", "Moon Jae-in" )
+
+friends["no_of_friends"] <- friends$friends
+
+friends$friends = NULL
+
+friends
+```
+```{r}
+# load package and data
+theme_set(theme_bw())  # pre-set the bw theme.
+
+g <- ggplot(friends, aes(name, no_of_friends))
+
+# barplot
+g + geom_col() + 
+  labs(subtitle="example plot", 
+       y="no of followers", 
+       x="name", 
+       title="Popular President?", 
+       )
+```
+
