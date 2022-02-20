@@ -24,17 +24,20 @@ user_friends <- function(screen_name, number = 195){
      #' 
      #' @export
      #' 
+    
+    # raise an error if the maximum number of user is more than 195.
     if (number > 195){
         stop("The number of users to return per page, up to a maximum of 195")
     }
     
+    # get the bearer key
     bearer = get_bearer()
     
     base_url = "https://api.twitter.com/1.1/friends/list.json?"
     
     full_url = glue(base_url, 'screen_name={screen_name}&count={number}')
     
-    
+    # retrieve information from Twitter
     res=GET(full_url, add_headers(
         Authorization=paste0("Bearer ", bearer$access_token))
     )
@@ -48,7 +51,7 @@ user_friends <- function(screen_name, number = 195){
     
     json_data <- fromJSON(obj, flatten = TRUE)
     
-    
+    # output the 3 columns as a data frame
     data <- json_data$users  %>% select(name,screen_name, description) %>% as.data.frame()
     
     return(data)
