@@ -1,7 +1,7 @@
 Package: twitterapiR
 Title: An R Wrapper for the Twitter API
 Version: 0.1.0
-Author: Authors@R: 
+Authors@R: 
     c(
         person("Nelson", "Tang", , "tangaot@mail.ubc.ca", role = c("aut", "cre")),
         person("Ling", "Xiang", "Zou", , "czou0101@mail.ubc.ca", role = c("aut", "ctb")),
