@@ -1,5 +1,21 @@
 followersCount <- function(screen_name){
-    
+    #' followersCount
+    #' 
+    #' @description This function will accept the screen name of a user and output the total number of followers of that user
+    #' 
+    #' @param screen_name character. A string of one Twitter screen name. 
+    #' 
+    #' @usage followersCount(screen_name)
+    #' @return A dataframe containing the following columns:
+    #' screen_name: The screen name of the user
+    #' followers_count: The number of followers of user
+    #' 
+    #' @references <https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/follow-search-get-users/api-reference/get-followers-list>
+    #' @examples
+    #' followersCount(screen_name ="BarackObama")
+    #' 
+    #' @export
+    #' 
     if (nchar(screen_name) > 100) {
         stop("screen_name can only be up to 100 characters")
     } else if (nchar(screen_name) == 0) {
