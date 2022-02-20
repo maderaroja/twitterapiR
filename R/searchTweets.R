@@ -68,7 +68,7 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     # get key and secret
     bearer <- get_bearer()
     
-    searchString <- URLencode(searchString, reserved = TRUE) # encode characters in URLs
+    searchString <- utils::URLencode(searchString, reserved = TRUE) # encode characters in URLs
     
     base <- "https://api.twitter.com/1.1/search/tweets.json?q="
     
@@ -87,6 +87,17 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     json_data <- jsonlite::fromJSON(obj, flatten = TRUE) #convert to json
     
     data <- as.data.frame(json_data) #convert json to dataframe
+    
+    statuses.created_at <- NULL
+    statuses.user.name  <- NULL
+    statuses.user.screen_name  <- NULL
+    statuses.user.followers_count <- NULL
+    statuses.text <- NULL
+    statuses.truncated <- NULL
+    statuses.favorited <- NULL
+    statuses.retweeted <- NULL
+    statuses.favorite_count <- NULL
+    statuses.retweet_count <- NULL
     
     #select columns that we are interested
     data <- dplyr::select(data, 

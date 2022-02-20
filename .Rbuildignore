@@ -6,4 +6,6 @@
 ^Vignettes$
 ^CONTRIBUTING\.md$
 ^doc\.pdf$
+^doc\.Rmd$
 ^cran-comments\.md$
+^CRAN-SUBMISSION$

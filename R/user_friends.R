@@ -51,6 +51,9 @@ user_friends <- function(screen_name, number = 195){
     
     json_data <- fromJSON(obj, flatten = TRUE)
     
+    name <- NULL
+    description <- NULL
+    
     # output the 3 columns as a data frame
     data <- json_data$users  %>% select(name,screen_name, description) %>% as.data.frame()
     

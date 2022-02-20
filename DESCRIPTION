@@ -3,9 +3,9 @@ Title: An R Wrapper for the Twitter API
 Version: 0.1.0
 Authors@R: 
     c(
-        person("Nelson", "Tang", , "tangaot@mail.ubc.ca", role = c("aut", "cre")),
-        person("Ling", "Xiang", "Zou", , "czou0101@mail.ubc.ca", role = c("aut", "ctb")),
-        person("Nyanda", "Redwood", , "nredwood@mail.ubc.ca", role = c("aut", "ctb"))
+        person(given = "Nelson", family = "Tang", email =  "tangaot@mail.ubc.ca", role = c("aut", "cre")),
+        person(given = "LingXiang", family = "Zou", email = "czou0101@mail.ubc.ca", role = c("aut", "ctb")),
+        person(given = "Nyanda", family = "Redwood", email = "nredwood@mail.ubc.ca", role = c("aut", "ctb"))
     )
 Description: Contains functions that wrap the Twitter API  at <https://developer.twitter.com/en/docs/twitter-api>.
     Twitter is a popular social media platform.
@@ -18,7 +18,8 @@ Imports:
     ggplot2,
     glue,
     dplyr,
-    openssl
+    openssl,
+    utils
 Encoding: UTF-8
 Suggests: 
     rmarkdown,

@@ -28,7 +28,7 @@ followersCount <- function(screen_name){
     bearer = get_bearer()
 
     # retreive information from Twitter
-    screen_name <- URLencode(screen_name, reserved = TRUE) # encode characters in URLs
+    screen_name <- utils::URLencode(screen_name, reserved = TRUE) # encode characters in URLs
     base <- "https://api.twitter.com/1.1/users/show.json?screen_name="
     url <- paste0(base, screen_name)
     res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))

@@ -1,3 +1,13 @@
+Re-submission
+---
+
+This is a resubmission. In this version I have:
+
+* Fixed API key issues in testthat files.
+
+* Fixed build notes.
+
+
 Test environments
 ---
 
