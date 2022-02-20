@@ -15,7 +15,7 @@ Depends:
 Imports:
     httr,
     jsonlite,
-    ggplot2
+    ggplot2,
     glue,
     dplyr,
     openssl
