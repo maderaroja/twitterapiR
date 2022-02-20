@@ -1,5 +1,5 @@
-key <- Sys.getenv("TWITTER_API_KEY")
-secret <- Sys.getenv("TWITTER_API_SECRET")
+key <- "Tds7CCMzPsJbRZH7aikpKiObN"
+secret <- "lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz"
 setted <- set_bearer(key, secret)
 
 test_that("Incorrect inputs", {

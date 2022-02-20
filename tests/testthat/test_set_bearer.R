@@ -1,7 +1,7 @@
 
 test_that("API key is set successfully", {
-    key <- Sys.getenv("TWITTER_API_KEY")
-    secret <- Sys.getenv("TWITTER_API_SECRET")
+    key <- "Tds7CCMzPsJbRZH7aikpKiObN"
+    secret <- "lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz"
     expect_true(set_bearer(key, secret))
 })
 
