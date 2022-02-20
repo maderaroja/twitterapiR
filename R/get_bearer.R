@@ -15,17 +15,24 @@ get_bearer <- function() {
      #' 
      #' @export
      #' 
+     
+    # get the key and secret from the system environment
     key <- Sys.getenv("key")
     secret<-Sys.getenv("secret")
+     
+    # raise an error if there are no environment variables named "key" or "secret"
     if (key == "" | secret == "") {
         stop("You must provide an API key to the function or use `Sys.setenv(key = 'your_key_here')`, `Sys.setenv(secret = 'your_secret_key_here')`")
     }
+     
+    # concatenate key and secret as a bearer key.
     app_keys <- openssl::base64_encode(paste0(key, ":", secret))
     r <- httr::POST("https://api.twitter.com/oauth2/token",
                     httr::add_headers(Authorization = paste0("Basic ", app_keys)),
                     body = list(grant_type = "client_credentials"))
     bearer <- httr::content(r, encoding = "UTF-8")
     
+     # raise an error if the bearer key is invalid. Otherwise return the bearer key as a list.
     if (!is.null(bearer$errors)){
         stop("Invalid key or secret, please see the following details: https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api")
     }else{
