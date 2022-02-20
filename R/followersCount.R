@@ -16,20 +16,21 @@ followersCount <- function(screen_name){
     #' 
     #' @export
     #' 
+    
+    # raise an errors if the number characters of the inputted screen name is greater than 100 and if the number characters of the inputted screen name is 0.
     if (nchar(screen_name) > 100) {
         stop("screen_name can only be up to 100 characters")
     } else if (nchar(screen_name) == 0) {
         stop("screen_name cannot be empty")
     }
     
+    # get the bearer key
     bearer = get_bearer()
 
+    # retreive information from Twitter
     screen_name <- URLencode(screen_name, reserved = TRUE) # encode characters in URLs
-
     base <- "https://api.twitter.com/1.1/users/show.json?screen_name="
-
     url <- paste0(base, screen_name)
-
     res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
     
     #check connection
@@ -40,6 +41,8 @@ followersCount <- function(screen_name){
     obj <- httr::content(res, as = "text")
     
     json_data <- jsonlite::fromJSON(obj, flatten = TRUE)
+    
+    # ouput the screen_name and followers count as a data frame.
     screen_name <- as.data.frame(json_data$screen_name)
     followers_count <- as.data.frame(json_data$followers_count)
     data <- merge(screen_name, followers_count)
