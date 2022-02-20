@@ -23,11 +23,13 @@ Follow the instruction and fill in some basic info. After your project is create
 In your R session, you will want to do the following using the appropriate values from the web page:  
   
                                 set_bearer("API key", "API secret")
+                                
 This will authenticate via **httr**, we recommend looking at the Token man page of this package for more information regarding how to manage the authentication and caching processes.  
   
 # 3. Getting Started  
   
 This document is intended to describe the usage of each function and to show examples of each function. To explore the source code or report some issues, we recommend going to our [GitHub](https://https://github.com/tangaot/twitterapiR). Before exploring our functionality, please make sure you complete the following steps.
+
 ```{r, eval=FALSE}
 # install package
 remotes::install_github("tangaot/twitterapiR")
@@ -40,12 +42,14 @@ library(twitterapiR)
 ```{r, eval=FALSE}
 set_bearer("API key", "API secret")
 ```
+
 # 4. Exploring *twitterapiR*   
 
 ## 4.1  Necessary Environtmental Variables
+
 The **set_bearer** function will set key and secret key as environment variables. The key and secret key are always required. These are essentially the username and password for Twitter API. You can refer to **Authentication** to generate the key and secret key. If the key and secret key are successfully set, the function will return `TRUE`. Otherwise, it will return `FALSE`. 
 
-```{r, dev.args=FALSE, eval=FALSE}
+```{r, eval=FALSE}
 set_bearer("API key", "API secret")
 ```
   
@@ -54,43 +58,51 @@ The **get_bearer** function is a helper function that can be used to generate th
 ```{r, eval = FALSE}
 get_bearer()
 ```
-##4.2 Exploring Friends of a User
+
+## 4.2 Exploring Friends of a User
+
 The **user_friends** function can be used to get some of the names of the friends of a user. A friend is being understood here where the act of following is reciprocal. That is, the followers of a user that said user follows back. The **user_friends** function takes two arguments: `screen_name` and `number`.  
   
 To get a user's friends, run the command **user_friends**. This will only work correctly with users who have their profiles public, or if you are authenticated and granted access. The **user_friends** function returns a DataFrame with the name of the user, screen name of the user, and name's of the friends of the user.
-```{r, eval = FALSE}
+
+```{r}
 user_friends(screen_name = "BarackObama", number = 10)
 ```
-##4.3 Exploring the Number of Followers of a User  
+
+## 4.3 Exploring the Number of Followers of a User  
+
 The **followersCount** function can be used to return the total number of followers of a user. It does so by using a user's screen name as its sole argument. It returns the user's screen name and the total number of followers of a user in a DataFrame. The idea here is to cater to those curious about the number of followers a user of interest has.  
   
 To get a user's followers, run the command **followersCount**. This will only work correctly with users who have their profiles public, or if you're authenticated and granted access.
 
-```{r, eval = FALSE}
+```{r}
 followersCount(screen_name = "BarackObama")
 ```
 
 ## 4.4 Search Tweets
+
 The **searchTweets** function can be used to search for related tweets that match the specified string. The argument for `searchString` is the string of 100 characters maximum we want to search for in the tweet, it can contain hashtag in order to search some tag in Twitter. The `count` will restricts the maximum number of tweets return. Default is 5. The `resultType` will specifies what type of search results you would prefer to receive. The  default is “mixed.” Valid values include:  
+
+ - mixed: Include both popular and real time results in the response
  
- - mixed: Include both popular and real time results in the response.  
- - recent: return only the most recent results in the response. 
- - popular: return only the most popular results in the response.  
+ - recent: return only the most recent results in the response
+ 
+ - popular: return only the most popular results in the response
    
- The function will return a dataframe contains following columns:  
+The function will return a dataframe contains following columns:  
+
  - created_time: When this tweet was created
-  - user_name: The name of the user
-  - user_screen_name: The screen name of the user
-  - user_followers_count: The number of followers of the user
-  - text: The text of this tweet
-  - truncated: Whether this tweet was truncated
-  - favorited: Whether this tweet has been favorite}
-  - retweeted: Whether this tweet has been retweeted
-  - favorite_count: The number of times this tweet has been favorited
-  - retweet_count: The number of times this tweet has been retweeted
-```{r, eval = FALSE}
-library(twitterapiR)
-res <- searchTweets("#ubc", resultType = "mixed", count = 15)
-tail(res)
+ - user_name: The name of who post this tweets
+ - user_screen_name: The screen name of  who post this tweets
+ - user_followers_count: The number of followers of who post this tweets
+ - text: The text of this tweet
+ - truncated: Whether this tweet was truncated
+ - favorited: Whether this tweet has been favorite}
+ - retweeted: Whether this tweet has been retweeted
+ - favorite_count: The number of times this tweet has been favorited
+ - retweet_count: The number of times this tweet has been retweeted
+
+```{r}
+searchTweets("#ubc", resultType = "mixed", count = 5)
 ```
 
