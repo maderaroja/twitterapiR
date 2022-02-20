@@ -1,11 +1,10 @@
 ^\.github$
-^.*\.Rproj$
+^twitterapiR\.Rproj$
 ^\.Rproj\.user$
-^codecov\.yml$
 ^CODE_OF_CONDUCT\.md$
-^Vignettes$
 ^CONTRIBUTING\.md$
 ^doc\.pdf$
 ^doc\.Rmd$
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
+^LICENSE\.md$
