@@ -2,16 +2,16 @@ set_bearer <- function(key, secret){
     
     #' set_bearer
     #' 
-    #' @description This function will set key, and secret key as environment variable.
+    #' @description This function will set key, and secret as environment variables.
     #' 
-    #' @param key character. Twitter API key are used to authenticate requests.
-    #' @param secret character. Twitter API key secret are used to authenticate requests.
+    #' @param key character. Twitter API key is used to authenticate requests.
+    #' @param secret character. Twitter API secret is used to authenticate requests.
     #' 
     #' @usage set_bearer(key, secret)
     #' @return If the key and secret are successfully set, the function will return TRUE, otherwise, return FALSE.
     #' 
-    #' @details The key and secret is always required, that is essentially the username and password for your API. 
-    #' To generate this key via https://developer.twitter.com/
+    #' @details The key and secret are always required, which are essentially the username and password for your API. 
+    #' To generate this key do so via https://developer.twitter.com/
     #' 
     #' @examples
     #' key = 'YOUR-KEY-HERE'
