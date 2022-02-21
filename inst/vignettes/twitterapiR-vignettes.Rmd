@@ -24,14 +24,14 @@ library(ggplot2)
 
 ## Descritpion  
   
-The `twitterapiR` package is an R wrapper for [Twitter API](https://developer.twitter.com/en/docs/twitter-api), which provides programmatic access to the popular social media platform **Twitter**. The `twitterapiR` package provides access to each of the endpoints of **Twitter API**, and it  contains several functions, for each of which the following documentation offers usage examples.
+The `twitterapiR` package is an R wrapper for [Twitter API](https://developer.twitter.com/en/docs/twitter-api), which provides programmatic access to the popular social media platform **Twitter**. The `twitterapiR` package provides access to each of the endpoints of **Twitter API**, and it contains several functions, for each of which the following documentation offers usage examples.
 
 ## Function Usage
-The `set_bearer()` function sets key and secret key as environment variables.
+The `set_bearer()` function sets key and secret as environment variables.
 ```{r}
 set_bearer('Tds7CCMzPsJbRZH7aikpKiObN', 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
 ```
-The `searchTweets()` function can be used to find recent tweets using characters including hash tags. In the example below `searchTweets()` function returns all the users who recently used #ubc.
+The `searchTweets()` function can be used to find recent tweets using characters including hashtags. In the example below the `searchTweets()` function returns all the users who recently used #ubc.
 
 ```{r}
 # Use `searchTweets` functions to search for the top 100 recent tweets using #ubc
@@ -66,7 +66,7 @@ The `followersCount()` function can be used to quickly get the number of followe
 - Emmanuel Macron - President of France
 - Moon Jae-in - President of South Korea
 ```{r} 
-# Use followersCount to find the number of follower for each country leader
+# Use followersCount to find the number of followers for each country leader
 list = c("POTUS", "JustinTrudeau", "BorisJohnson", "EmmanuelMacron", "moonriver365")
 followers = c()
 for (i in list){
