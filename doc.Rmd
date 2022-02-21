@@ -65,7 +65,7 @@ The **user_friends** function can be used to get some of the names of the friend
   
 To get the friends of a user, run the command **user_friends**. This will only work correctly with users that have public profiles, or if you are authenticated and granted access. The **user_friends** function returns a DataFrame with the name of the user, screen name of the user, and names of the friends of the user.
 
-```{r}
+```{r, eval = FALSE}
 user_friends(screen_name = "BarackObama", number = 10)
 ```
 
@@ -75,7 +75,7 @@ The **followersCount** function can be used to return the total number of follow
   
 To get the number of followers a user has, run the command **followersCount**. This will only work correctly with users that have public profiles, or if you are authenticated and granted access.
 
-```{r}
+```{r, eval = FALSE}
 followersCount(screen_name = "BarackObama")
 ```
 
@@ -102,7 +102,7 @@ The function will return a DataFrame containing the following columns:
  - favorite_count: the number of times the tweet was favorited
  - retweet_count: the number of times the tweet was retweeted
 
-```{r}
+```{r, eval = FALSE}
 searchTweets("#ubc", resultType = "mixed", count = 5)
 ```
 
