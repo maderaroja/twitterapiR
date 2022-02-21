@@ -38,7 +38,7 @@ do so, go to the [Developer Platform’s
 page](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api)
 and log in.
 
-Follow the instruction and fill in some basic info. After your project
+Follow the instruction and fill in some basic information. After your project
 is created, you can generate your consumer API and Secret key.
 
 In your R session, you will want to do the following using the
@@ -62,7 +62,7 @@ steps.
 
 ## Function Usage
 
-The `set_bearer` function sets key and secret as environment
+The `set_bearer()` function sets key and secret as environment
 variables.
 
 -   **key**: Twitter API key is used to authenticate requests.
@@ -75,15 +75,15 @@ set_bearer('YOUR-KEY-HERE', 'YOUR-SECRET-HERE')
 
 The `get_bearer` function is a helper function that can be used to
 generate the bearer key by using `API key` and `API secret`. It is
-embedded in the functions `searchTweets`, `user_friends`, and
-`followersCount`. The bearer key allows the users to query information
+embedded in the functions `searchTweets()`, `user_friends()`, and
+`followersCount()`. The bearer key allows the users to query information
 from Twitter.
 
 ``` r
 get_bearer()
 ```
 
-The `searchTweets` function can be used to search for related tweets
+The `searchTweets()` function can be used to search for related tweets
 that match the specified string.
 
 Parameters:
@@ -99,7 +99,7 @@ Parameters:
     want to receive. The default is “mixed.” Valid values
     include:
 
-                      - mixed: s both popular and real time results in the response
+                      - mixed: returns both popular and real time results in the response
 
                       - recent: returns only the most recent results in the response
 
