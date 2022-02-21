@@ -5,7 +5,7 @@
 A function to output the friends of one user
 }
 \description{
- This function will accept a screen name of an user and output the name, screen name, and description of the user's friends.
+ This function will accept a screen name of a user and output the name, screen name, and names of the user's friends.
 }
 \usage{
 user_friends(screen_name, number = 195)
@@ -16,16 +16,16 @@ user_friends(screen_name, number = 195)
 A string of one Twitter screen name
 }
   \item{number}{
-The number of friends to output. Default is 195.
+The number of friends to output, the default is 195.
 }
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
-This will only work correctly with users who have their profile public, or you are authenticate or granted access.
+This will only work correctly with users that have public profiles, or if you are authenticated or granted access.
 
 }
 \value{
-A dataframe contains following columns:
+A DataFrame that contains the following columns:
 \item{name}{The name of the user}
 
 \item{screen_name}{The screen name of the user}

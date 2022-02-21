@@ -15,19 +15,19 @@ set_bearer(key, secret)
 \arguments{
 %%     ~~Describe \code{x} here~~
   \item{key}{
-Twitter API key are used to authenticate requests.
+Twitter API key is used to authenticate requests.
 }
   \item{secret}{
-Twitter API key secret are used to authenticate requests.
+Twitter API secret is used to authenticate requests.
 }
 
 }
 \details{
 %%  ~~ If necessary, more details than the description above ~~
 
-The \code{key and secret} is always required, that is essentially the username and password for your API. To generate this key via \url{https://developer.twitter.com/}
+The \code{key and secret} is always required, which is essentially the username and password for your API. To generate this key via \url{https://developer.twitter.com/}
 
-If the key and secret are successfully set, the function will return TRUE, otherwise, return FALSE.
+If the key and secret are successfully set, the function will return TRUE; otherwise, it returns FALSE.
 
 }
 \value{
