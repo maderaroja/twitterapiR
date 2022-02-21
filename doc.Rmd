@@ -11,14 +11,14 @@ urlcolor: blue
   
 The intent of the ***twitterapiR*** is to provide a quick exploratory service of the resources provided by ***Twitter***, a popular social media platform. It does so by providing access to the Twitter API via R.  
   
-***twitterapiR*** outputs a general DataFrame as well disaggregated DataFrames for the total number of followers per user as well the names of the friends of a user. Both these subsets include the users screen name. The latter subset is capped to a maximum number of 195 friends per user and displays the user's name separately from the user's screen name.  
+***twitterapiR*** outputs a general DataFrame as well disaggregated DataFrames for the total number of followers per user as well the names of the friends of a user. Both these subsets include the user's screen name. The latter subset is capped to a maximum number of 195 friends per user and displays the user's name separately from the user's screen name.  
   
 # 2. Authentication  
   
 You will need to follow these instructions to continue. We are accessing ***Twitter*** programatically. ***twitterapiR*** uses the **httr** package under the hood to manage this.    
 The first step is to create a ***Twitter*** application for yourself. To do so, go to the [Developer Platform's page](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api) and log in.  
    
-Follow the instruction and fill in some basic info. After your project is created, you can generate your consumer API and Secret key.  
+Follow the instructions and fill in some basic information. After your project is created, you can generate your consumer API and secret key.  
    
 In your R session, you will want to do the following using the appropriate values from the web page:  
   
@@ -45,7 +45,7 @@ set_bearer("API key", "API secret")
 
 # 4. Exploring *twitterapiR*   
 
-## 4.1  Necessary Environtmental Variables
+## 4.1  Necessary Environtment Variables
 
 The **set_bearer** function will set key and secret key as environment variables. The key and secret key are always required. These are essentially the username and password for Twitter API. You can refer to **Authentication** to generate the key and secret key. If the key and secret key are successfully set, the function will return `TRUE`. Otherwise, it will return `FALSE`. 
 
@@ -61,9 +61,9 @@ get_bearer()
 
 ## 4.2 Exploring Friends of a User
 
-The **user_friends** function can be used to get some of the names of the friends of a user. A friend is being understood here where the act of following is reciprocal. That is, the followers of a user that said user follows back. The **user_friends** function takes two arguments: `screen_name` and `number`.  
+The **user_friends** function can be used to get some of the names of the friends of a user. A friend is being understood here as an individual who reciprocates the act of following another person. The **user_friends** function takes two arguments: `screen_name` and `number`.  
   
-To get a user's friends, run the command **user_friends**. This will only work correctly with users who have their profiles public, or if you are authenticated and granted access. The **user_friends** function returns a DataFrame with the name of the user, screen name of the user, and name's of the friends of the user.
+To get the friends of a user, run the command **user_friends**. This will only work correctly with users that have public profiles, or if you are authenticated and granted access. The **user_friends** function returns a DataFrame with the name of the user, screen name of the user, and names of the friends of the user.
 
 ```{r}
 user_friends(screen_name = "BarackObama", number = 10)
@@ -73,7 +73,7 @@ user_friends(screen_name = "BarackObama", number = 10)
 
 The **followersCount** function can be used to return the total number of followers of a user. It does so by using a user's screen name as its sole argument. It returns the user's screen name and the total number of followers of a user in a DataFrame. The idea here is to cater to those curious about the number of followers a user of interest has.  
   
-To get a user's followers, run the command **followersCount**. This will only work correctly with users who have their profiles public, or if you're authenticated and granted access.
+To get the number of followers a user has, run the command **followersCount**. This will only work correctly with users that have public profiles, or if you are authenticated and granted access.
 
 ```{r}
 followersCount(screen_name = "BarackObama")
@@ -81,26 +81,26 @@ followersCount(screen_name = "BarackObama")
 
 ## 4.4 Search Tweets
 
-The **searchTweets** function can be used to search for related tweets that match the specified string. The argument for `searchString` is the string of 100 characters maximum we want to search for in the tweet, it can contain hashtag in order to search some tag in Twitter. The `count` will restricts the maximum number of tweets return. Default is 5. The `resultType` will specifies what type of search results you would prefer to receive. The  default is “mixed.” Valid values include:  
+The **searchTweets** function can be used to search for related tweets that match a specified string. The argument for `searchString` is a string of 100 characters, maximum, that pertains to your desired search terms in a tweet. The argument can also contain hashtags if you are interested in finding specific hashtags. The `count` will restrict the maximum number of returned tweets, and it defaults to 5. The `resultType` will specify the kind of search result that you want, and it  defaults to “mixed.” Valid values include:  
 
- - mixed: Include both popular and real time results in the response
+ - mixed: includes both popular and real time results in the response
  
- - recent: return only the most recent results in the response
+ - recent: returns only the most recent results in the response
  
- - popular: return only the most popular results in the response
+ - popular: returns only the most popular results in the response
    
-The function will return a dataframe contains following columns:  
+The function will return a DataFrame containing the following columns:  
 
- - created_time: When this tweet was created
- - user_name: The name of who post this tweets
- - user_screen_name: The screen name of  who post this tweets
- - user_followers_count: The number of followers of who post this tweets
- - text: The text of this tweet
- - truncated: Whether this tweet was truncated
- - favorited: Whether this tweet has been favorite}
- - retweeted: Whether this tweet has been retweeted
- - favorite_count: The number of times this tweet has been favorited
- - retweet_count: The number of times this tweet has been retweeted
+ - created_time: the time the tweet was created
+ - user_name: the name of who posted the tweets
+ - user_screen_name: the screen name of  who posted the tweet
+ - user_followers_count: the number of followers that posted the tweet
+ - text: the text within the tweet
+ - truncated: indicates if the tweet is truncated
+ - favorited: indicates if the tweet is favorited
+ - retweeted: indicates if the tweet was retweeted
+ - favorite_count: the number of times the tweet was favorited
+ - retweet_count: the number of times the tweet was retweeted
 
 ```{r}
 searchTweets("#ubc", resultType = "mixed", count = 5)
