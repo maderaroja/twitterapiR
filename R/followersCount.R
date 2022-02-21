@@ -6,9 +6,9 @@ followersCount <- function(screen_name){
     #' @param screen_name character. A string of one Twitter screen name. 
     #' 
     #' @usage followersCount(screen_name)
-    #' @return A dataframe containing the following columns:
-    #' screen_name: The screen name of the user
-    #' followers_count: The number of followers of user
+    #' @return A DataFrame containing the following columns:
+    #' screen_name: The screen name of a user
+    #' followers_count: The number of followers of a user
     #' 
     #' @references <https://developer.twitter.com/en/docs/twitter-api/v1/accounts-and-users/follow-search-get-users/api-reference/get-followers-list>
     #' @examples
@@ -17,7 +17,7 @@ followersCount <- function(screen_name){
     #' @export
     #' 
     
-    # raise an errors if the number characters of the inputted screen name is greater than 100 and if the number characters of the inputted screen name is 0.
+    # raise an error if the number of characters of the inputted screen name is greater than 100 and if the number of characters of the inputted screen name is 0.
     if (nchar(screen_name) > 100) {
         stop("screen_name can only be up to 100 characters")
     } else if (nchar(screen_name) == 0) {
@@ -27,13 +27,13 @@ followersCount <- function(screen_name){
     # get the bearer key
     bearer = get_bearer()
 
-    # retreive information from Twitter
+    # retrieve information from Twitter
     screen_name <- utils::URLencode(screen_name, reserved = TRUE) # encode characters in URLs
     base <- "https://api.twitter.com/1.1/users/show.json?screen_name="
     url <- paste0(base, screen_name)
     res = httr::GET(url, httr::add_headers(Authorization=paste0("Bearer ", bearer$access_token)))
     
-    #check connection
+    # check connection
     if (res$status_code != '200'){
     stop(paste("Connection Failed! Please see the following detail: \n",res))
     }
@@ -42,7 +42,7 @@ followersCount <- function(screen_name){
     
     json_data <- jsonlite::fromJSON(obj, flatten = TRUE)
     
-    # ouput the screen_name and followers count as a data frame.
+    # ouputs the screen_name and followers count as a data frame.
     screen_name <- as.data.frame(json_data$screen_name)
     followers_count <- as.data.frame(json_data$followers_count)
     data <- merge(screen_name, followers_count)
