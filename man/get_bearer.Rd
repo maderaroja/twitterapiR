@@ -5,7 +5,7 @@
 A function to get the bearer key
 }
 \description{
-This function is a helper function that can be used to help generate bearer key using API key and API secret.
+This function is a helper function that can be used to generate the bearer key using API key and API secret.
 }
 \usage{
 get_bearer()
@@ -13,7 +13,7 @@ get_bearer()
 
 
 \details{
-The key and secret key is required to use the functions in twitterapiR package and query information
+The key and secret are required to use the functions in twitterapiR package and query information
 from Twitter.
 }
 \value{
