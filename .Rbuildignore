@@ -8,3 +8,5 @@
 ^cran-comments\.md$
 ^CRAN-SUBMISSION$
 ^LICENSE\.md$
+^figures$
+^README\.Rmd$
