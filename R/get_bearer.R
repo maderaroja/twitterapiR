@@ -10,7 +10,7 @@ get_bearer <- function() {
      #' 
      #' @examples
      #' key = 'YOUR-KEY-HERE'
-     #' secret = 'YOUR-SECRET-KEY-HERE'
+     #' secret = 'YOUR-SECRET-HERE'
      #' get_bearer()
      #' 
      #' @export

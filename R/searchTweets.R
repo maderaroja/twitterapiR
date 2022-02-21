@@ -29,7 +29,7 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     #' registerTwitterOAuth, which users can use. Please note that Twitter's search service and, 
     #' by extension, the Search API is not meant to be an exhaustive source of Tweets.
     #' 
-    #' The searchString is always required. It can contain hash tags in order to search specific tags in Twitter.
+    #' The searchString is always required. It can contain hashtags in order to search specific tags in Twitter.
     #' The resultType specifies the type of search results that you want. 
     #' The current default is "mixed." Valid values include:
     #' mixed : includes both popular and real time results in the response
@@ -38,7 +38,7 @@ searchTweets <- function(searchString, resultType = "mixed", count = 5){
     #' 
     #' @references <https://developer.twitter.com/en/docs/twitter-api/v1/tweets/search/api-reference/get-search-tweets>
     #' @examples
-    #' ##search for hash tag #canada
+    #' ##search for hashtag #canada
     #' searchTweets('#canada', resultType = "popular", count = 15)
     #' 
     #' @export
