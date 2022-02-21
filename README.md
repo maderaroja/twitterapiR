@@ -1,12 +1,12 @@
 twitterapiR
 ================
 
-## Description
-
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/tangaot/twitterapiR/workflows/R-CMD-check/badge.svg)](https://github.com/tangaot/twitterapiR/actions)
 <!-- badges: end -->
+
+## Description
 
 This project is an API wrapper for Twitter in R. This package provides
 user friendly functions for the users to query information from Twitter.
