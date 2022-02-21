@@ -27,7 +27,7 @@ library(ggplot2)
 The `twitterapiR` package is an R wrapper for [Twitter API](https://developer.twitter.com/en/docs/twitter-api), which provides programmatic access to the popular social media platform **Twitter**. The `twitterapiR` package provides access to each of the endpoints of **Twitter API**, and it  contains several functions, for each of which the following documentation offers usage examples.
 
 ## Function Usage
-The `set_bearer` function() sets key and secret key as environment variables.
+The `set_bearer()` function sets key and secret key as environment variables.
 ```{r}
 set_bearer('Tds7CCMzPsJbRZH7aikpKiObN', 'lPH7pIQIS1pVinxh48xvXWgqzGa9gre4Utb9tIZ2W1U0nSCgrz')
 ```
@@ -35,7 +35,7 @@ The `searchTweets()` function can be used to find recent tweets using characters
 
 ```{r}
 # Use `searchTweets` functions to search for the top 100 recent tweets using #ubc
-ubc_tweets <- searchTweets("#ubc", resultType = "recent",count = 100)
+ubc_tweets <- searchTweets("#ubc", resultType = "recent", count = 100)
 
 # Select those with start=5 and end time=13
 created_time <- substr(ubc_tweets$created_time, start = 5, stop = 13)
@@ -60,11 +60,11 @@ ggplot(created_time_df, aes(x = created_time, y = num_tweets)) +
 ```
 The `followersCount()` function can be used to quickly get the number of followers a user has by using the user's screen name. In the plot below we used this function in a for loop to get the followers of the following state leaders as of 2022:
 
-- Joe Biden -President of the United States
-- Justin Trudeau -Prime Minister of Canada
-- Boris Johnson -Prime Mnister of the United Kingdom
-- Emmanuel Macron -President of France
-- Moon Jae-in -President of South Korea
+- Joe Biden - President of the United States
+- Justin Trudeau - Prime Minister of Canada
+- Boris Johnson - Prime Minister of the United Kingdom
+- Emmanuel Macron - President of France
+- Moon Jae-in - President of South Korea
 ```{r} 
 # Use followersCount to find the number of follower for each country leader
 list = c("POTUS", "JustinTrudeau", "BorisJohnson", "EmmanuelMacron", "moonriver365")
@@ -103,11 +103,11 @@ The `user_friends()` function can be used to retrieve the number of friends a us
   
 Similar to the above plot, the plot below uses the `user_friends()` function in a for loop to get the friends of the following state leaders as of 2022:  
   
-- Joe Biden -President of the United States
-- Justin Trudeau -Prime Minister of Canada
-- Boris Johnson -Prime Mnister of the United Kingdom
-- Emmanuel Macron -President of France
-- Moon Jae-in -President of South Korea
+- Joe Biden - President of the United States
+- Justin Trudeau - Prime Minister of Canada
+- Boris Johnson - Prime Minister of the United Kingdom
+- Emmanuel Macron - President of France
+- Moon Jae-in - President of South Korea
 ```{r}
 # Use user_friends to find the number of friends for each country leader
 list = c("POTUS", "JustinTrudeau", "BorisJohnson", "EmmanuelMacron", "moonriver365")
