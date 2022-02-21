@@ -51,13 +51,13 @@ remotes::install_github("tangaot/twitterapiR")
 You will need to follow these instructions to continue. We are accessing ***Twitter*** programatically. ***twitterapiR*** uses the **httr** package under the hood to manage this.    
 The first step is to create a ***Twitter*** application for yourself. To do so, go to the [Developer Platform's page](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api) and log in.  
    
-Follow the instruction and fill in some basic info. After your project is created, you can generate your consumer API and Secret key.  
+Follow the instruction and fill in some basic information. After your project is created, you can generate your consumer API and Secret key.  
    
 In your R session, you will want to do the following using the appropriate values from the web page:  
   
                                 set_bearer("API key", "API secret")
                                 
-This will authenticate via **httr**, we recommend looking at the Token man page of this package for more information regarding how to manage the authentication and caching processes.  
+This will authenticate via **httr**. We recommend looking at the Token man page of this package for more information regarding how to manage the authentication and caching processes.  
   
 ## Getting Started  
   
@@ -82,38 +82,38 @@ get_bearer()
 ```
 
 
-The `searchTweets` function can be used to search for related tweets that match the specified string. 
+The `searchTweets()` function can be used to search for related tweets that match a specified string. 
 
 Parameters:
 
-- **searchString**: a string of 100 characters maximum we want to search for in the tweet, it can contain hashtag in order to search some tag in Twitter. 
-- **count**: count will restricts the maximum number of tweets return. Default is 5. 
-- **resultType**: it will specifies what type of search results you would prefer to receive. The  default is “mixed.” Valid values include:  
+- **searchString**: a string of 100 characters maximum that is desired to be found, which can contain hashtags. 
+- **count**: count will restrict the maximum number of tweets to return, the default is 5. 
+- **resultType**: it will specify the type of search results that you want to receive. The  default is “mixed.” Valid values include:  
                 
-                    - mixed: Include both popular and real time results in the response
+                    - mixed: includes both popular and real time results in the response
  
-                    - recent: return only the most recent results in the response
+                    - recent: returns only the most recent results in the response
  
-                    - popular: return only the most popular results in the response
+                    - popular: returns only the most popular results in the response
    
-The function will return a dataframe contains following columns:  
+The function will return a DataFrame containing the following columns:  
 
- - created_time: When this tweet was created
- - user_name: The name of who post this tweets
- - user_screen_name: The screen name of  who post this tweets
- - user_followers_count: The number of followers of who post this tweets
- - text: The text of this tweet
- - truncated: Whether this tweet was truncated
- - favorited: Whether this tweet has been favorite}
- - retweeted: Whether this tweet has been retweeted
- - favorite_count: The number of times this tweet has been favorited
- - retweet_count: The number of times this tweet has been retweeted
+ - created_time: the data and time the the tweet was created
+ - user_name: the name of the user that posted the tweets
+ - user_screen_name: the screen name of the user that posted the tweets
+ - user_followers_count: the number of followers that posted the tweets
+ - text: the text within the tweet
+ - truncated: indicates if the tweet is truncated
+ - favorited: indicates if the tweet is favorited
+ - retweeted: indicates if the tweet was retweeted
+ - favorite_count: the number of times the tweet was favorited
+ - retweet_count: the number of times the tweet was retweeted
 
 
 In the example below `searchTweets()` function returns all the users who recently used #ubc.
 
 ```{r}
-# Use `searchTweets` functions to search for the top 100 recent tweets using #ubc
+# Use `searchTweets` function to search for the top 100 recent tweets using #ubc
 ubc_tweets <- searchTweets("#ubc", resultType = "recent",count = 100)
 
 head(ubc_tweets)
@@ -153,15 +153,15 @@ The `followersCount()` function can be used to quickly get the number of followe
 
 Parameters:
 
-- **screen_name**: A string of one Twitter screen name.
+- **screen_name**: A string of a screen name on Twitter.
 
-In the plot below we used this function in a for loop to get the followers of the following state leaders as of 2022:
+In the plot below we use this function in a for loop to get the followers of the following state leaders as of 2022:
 
-- Joe Biden -President of the United States
-- Justin Trudeau -Prime Minister of Canada
-- Boris Johnson -Prime Mnister of the United Kingdom
-- Emmanuel Macron -President of France
-- Moon Jae-in -President of South Korea
+- Joe Biden - President of the United States
+- Justin Trudeau - Prime Minister of Canada
+- Boris Johnson - Prime Minister of the United Kingdom
+- Emmanuel Macron - President of France
+- Moon Jae-in - President of South Korea
 
 
 ```{r} 
@@ -189,7 +189,7 @@ followers
 If you want to visualize the comparison, you can plot the results as follows.
 
 ```{r}
-# pre-set the bw theme
+# Pre-set the bw theme
 theme_set(theme_bw())  
 
 # Plot total number of followers per president
