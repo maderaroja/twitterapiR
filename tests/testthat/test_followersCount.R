@@ -7,7 +7,7 @@ test_that("Incorrect inputs", {
     expect_error(followersCount(screen_name="BarackObamaa"))
 })
 
-test_that("output is a data frame",{
+test_that("output is a DataFrame",{
     output <- followersCount(screen_name="BarackObama")
     expect_true(is.data.frame(output))
 })

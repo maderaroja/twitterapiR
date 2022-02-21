@@ -9,7 +9,7 @@ test_that("Incorrect inputs", {
     expect_error(searchTweets(searchString="#ubc" ,resultType = "mixed", count = 1000))
 })
 
-test_that("output is a data frame",{
+test_that("output is a DataFrame",{
     output <- searchTweets(searchString="#ubc" ,resultType = "mixed", count = 3)
     expect_true(is.data.frame(output))
 })
