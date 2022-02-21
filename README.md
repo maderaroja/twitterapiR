@@ -11,7 +11,7 @@ twitterapiR
 This project is an API wrapper for Twitter in R. This package provides
 user friendly functions for the users to query information from Twitter.
 
-Current list of functions included in the wrapper:
+The current list of functions included in the wrapper are:
 
 -   set_bearer(“API key”, “API secret”)
 -   get_bearer()
@@ -62,11 +62,11 @@ steps.
 
 ## Function Usage
 
-The `set_bearer` function sets key and secret key as environment
+The `set_bearer` function sets key and secret as environment
 variables.
 
--   **key**: Twitter API key are used to authenticate requests.
--   **secret**: Twitter API key secret are used to authenticate
+-   **key**: Twitter API key is used to authenticate requests.
+-   **secret**: Twitter API secret is used to authenticate
     requests.
 
 ``` r
@@ -88,42 +88,42 @@ that match the specified string.
 
 Parameters:
 
--   **searchString**: a string of 100 characters maximum we want to
-    search for in the tweet, it can contain hashtag in order to search
-    some tag in Twitter.
+-   **searchString**: a string of a maximum of 100 characters for the desired
+    search characters in a tweet. It can contain hashtags in order to search
+    specified tags in Twitter.
 
--   **count**: count will restricts the maximum number of tweets return.
-    Default is 5.
+-   **count**: count will restrict the maximum number of tweets to return.
+    The default is 5.
 
--   **resultType**: it will specifies what type of search results you
-    would prefer to receive. The default is “mixed.” Valid values
+-   **resultType**: specifies the kind of search results you
+    want to receive. The default is “mixed.” Valid values
     include:
 
-                      - mixed: Include both popular and real time results in the response
+                      - mixed: s both popular and real time results in the response
 
-                      - recent: return only the most recent results in the response
+                      - recent: returns only the most recent results in the response
 
-                      - popular: return only the most popular results in the response
+                      - popular: returns only the most popular results in the response
 
-The function will return a dataframe contains following columns:
+The function will return a DataFrame that contains the following columns:
 
--   created_time: When this tweet was created
--   user_name: The name of who post this tweets
--   user_screen_name: The screen name of who post this tweets
--   user_followers_count: The number of followers of who post this
-    tweets
--   text: The text of this tweet
--   truncated: Whether this tweet was truncated
--   favorited: Whether this tweet has been favorite}
--   retweeted: Whether this tweet has been retweeted
--   favorite_count: The number of times this tweet has been favorited
--   retweet_count: The number of times this tweet has been retweeted
+-   created_time: the date and time the tweet was created
+-   user_name: the name of the user that posted the tweet
+-   user_screen_name: the screen name of the user that posted the tweet
+-   user_followers_count: the number of followers that (re)posted the
+    tweet
+-   text: the text within the tweet
+-   truncated: indicates if the tweet is truncated
+-   favorited: indicates if the tweet was favorited
+-   retweeted: indicates it the tweet was retweeted
+-   favorite_count: the number of times the tweet was favorited
+-   retweet_count: the number of times the tweet was retweeted
 
 In the example below `searchTweets()` function returns all the users who
 recently used #ubc.
 
 ``` r
-# Use `searchTweets` functions to search for the top 100 recent tweets using #ubc
+# Use `searchTweets()` function to search for the top 100 recent tweets using #ubc
 ubc_tweets <- searchTweets("#ubc", resultType = "recent",count = 100)
 
 head(ubc_tweets)
@@ -216,9 +216,9 @@ followers a user has by using the user’s screen name.
 
 Parameters:
 
--   **screen_name**: A string of one Twitter screen name.
+-   **screen_name**: A string of a Twitter screen name.
 
-In the plot below we used this function in a for loop to get the
+In the plot below we use this function in a for loop to get the
 followers of the following state leaders as of 2022:
 
 -   Joe Biden -President of the United States
@@ -283,17 +283,17 @@ maximum number of returned friends is 195.
 Parameters:
 
 -   **screen_name**: A string of one Twitter screen name.
--   **number**: The number of friends to output. Default is 195.
+-   **number**: The number of friends to output. The default is 195.
 
 Similar to the above plot, the plot below uses the `user_friends()`
 function in a for loop to get the friends of the following state leaders
 as of 2022:
 
--   Joe Biden -President of the United States
--   Justin Trudeau -Prime Minister of Canada
--   Boris Johnson -Prime Mnister of the United Kingdom
--   Emmanuel Macron -President of France
--   Moon Jae-in -President of South Korea
+-   Joe Biden - President of the United States
+-   Justin Trudeau - Prime Minister of Canada
+-   Boris Johnson - Prime Minister of the United Kingdom
+-   Emmanuel Macron - President of France
+-   Moon Jae-in - President of South Korea
 
 ``` r
 # Use user_friends to find the number of friends for each country leader
